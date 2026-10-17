@@ -1,0 +1,19 @@
+{
+  "name": "timegrid-mern-backend",
+  "version": "1.0.0",
+  "description": "TimeGrid MERN Stack Backend with MongoDB Atlas & Express",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node run.js",
+    "dev": "node --watch run.js",
+    "seed": "node runSeed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "uuid": "^11.0.5"
+  }
+}
