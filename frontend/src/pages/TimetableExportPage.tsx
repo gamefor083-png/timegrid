@@ -2309,6 +2309,12 @@ export default function TimetableExportPage() {
               )}
             </div>
           )}
+
+          {/* Official Software Watermark / Footnote */}
+          <div className="mt-8 pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-[10px] text-slate-700 print:text-black font-sans">
+            <span>TimeGrid Academic Operating System &bull; Made by Kakadiya Technologies™</span>
+            <span>&copy; 2026 Meet Kakadiya. All rights reserved.</span>
+          </div>
         </div>
       </div>
     </div>

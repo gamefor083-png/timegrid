@@ -146,9 +146,12 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 space-y-1">
           <p className="text-[10px]" style={{ color: 'var(--tg-text-muted)' }}>
             Demo mode: any email/password combination works
+          </p>
+          <p className="text-[11px] font-semibold text-slate-400">
+            Made by <span className="text-slate-300">Kakadiya Technologies™</span> &bull; &copy; 2026 Meet Kakadiya
           </p>
         </div>
       </div>

@@ -168,6 +168,17 @@ export default function Sidebar({ collapsed, onToggleCollapse, onLogout }: Sideb
             <span>Sign Out</span>
           </button>
         )}
+
+        {!collapsed && (
+          <div className="pt-2 px-1 text-center border-t border-slate-200/70">
+            <div className="text-[10px] font-semibold text-slate-700">
+              Made by Kakadiya Technologies™
+            </div>
+            <div className="text-[9px] text-slate-500">
+              © 2026 Meet Kakadiya
+            </div>
+          </div>
+        )}
       </div>
     </aside>
   );

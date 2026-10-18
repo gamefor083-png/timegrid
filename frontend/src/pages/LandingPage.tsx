@@ -178,6 +178,7 @@ export default function LandingPage() {
               <a href="#calculator" className="hover:text-white transition-colors">Campus Savings</a>
               <a href="#comparison" className="hover:text-white transition-colors">Comparison</a>
               <a href="#pricing" className="hover:text-white transition-colors">Institutional Tiers</a>
+              <a href="#creator" className="hover:text-white transition-colors">Creator</a>
               <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
             </nav>
           </div>
@@ -1120,6 +1121,58 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Creator & Architecture Leadership ── */}
+      <section id="creator" className="relative z-10 py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.03] blur-3xl rounded-full pointer-events-none" />
+          
+          <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-12 relative z-10">
+            <div className="relative shrink-0">
+              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-2 border-zinc-700 shadow-2xl relative group bg-zinc-900">
+                <img
+                  src="/meet-kakadiya.jpg"
+                  alt="Meet Kakadiya"
+                  className="w-full h-full object-cover object-center grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white text-black text-[10px] font-mono font-bold tracking-wider uppercase whitespace-nowrap shadow-md">
+                CREATOR
+              </div>
+            </div>
+
+            <div className="text-center md:text-left space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>KAKADIYA TECHNOLOGIES™</span>
+              </div>
+              
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Meet Kakadiya
+              </h2>
+              
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xl font-normal">
+                Lead Architect & Creator of TimeGrid. Engineered to automate complex academic scheduling matrices, continuous multi-period laboratory allocations, and multi-division conflict resolution for higher-education engineering faculties and universities.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs font-mono text-zinc-400">
+                <div className="px-3 py-1.5 rounded-lg bg-black border border-zinc-800">
+                  <span className="text-zinc-500 mr-2">AUTHOR:</span>
+                  <span className="text-white font-bold">Meet Kakadiya</span>
+                </div>
+                <div className="px-3 py-1.5 rounded-lg bg-black border border-zinc-800">
+                  <span className="text-zinc-500 mr-2">STUDIO:</span>
+                  <span className="text-white font-bold">Kakadiya Technologies™</span>
+                </div>
+                <div className="px-3 py-1.5 rounded-lg bg-black border border-zinc-800">
+                  <span className="text-zinc-500 mr-2">COPYRIGHT:</span>
+                  <span className="text-white font-bold">© 2026 All Rights Reserved</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ Accordion ── */}
       <section id="faq" className="relative z-10 py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -1223,23 +1276,40 @@ export default function LandingPage() {
             </div>
 
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-white mb-3">Institutional Reference</div>
-              <p className="text-zinc-400 text-xs leading-relaxed font-sans">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-white mb-3">Architect & Creator</div>
+              <div className="flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 border border-zinc-800/80 mb-3">
+                <img
+                  src="/meet-kakadiya.jpg"
+                  alt="Meet Kakadiya"
+                  className="w-12 h-12 rounded-xl object-cover border border-zinc-700 shadow-lg grayscale hover:grayscale-0 transition-all"
+                />
+                <div>
+                  <div className="text-white font-sans text-xs font-bold tracking-tight">Meet Kakadiya</div>
+                  <div className="text-[10px] text-zinc-400 font-mono">Founder & Lead Engineer</div>
+                  <div className="text-[9px] text-emerald-400 font-mono mt-0.5 font-semibold">Kakadiya Technologies™</div>
+                </div>
+              </div>
+              <p className="text-zinc-500 text-[11px] leading-relaxed font-sans">
                 Chhotubhai Gopalbhai Patel Institute of Technology<br />
-                Department of Computer Engineering & IT<br />
-                Uka Tarsadia University
+                Department of Computer Engineering & IT
               </p>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-zinc-600">
-            <div>
-              © 2026 TIMEGRID PLATFORM INC. ALL RIGHTS RESERVED.
+          <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-sans">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-left">
+              <span className="font-semibold text-zinc-300">
+                © 2026 Meet Kakadiya. All rights reserved.
+              </span>
+              <span className="hidden sm:inline text-zinc-700">•</span>
+              <span className="inline-flex items-center gap-1.5 text-zinc-400 font-medium">
+                Made by <span className="text-white font-semibold">Kakadiya Technologies™</span>
+              </span>
             </div>
-            <div className="flex items-center gap-6">
-              <span className="hover:text-zinc-400 cursor-pointer">PRIVACY</span>
-              <span className="hover:text-zinc-400 cursor-pointer">TERMS</span>
-              <span className="hover:text-zinc-400 cursor-pointer">SECURITY</span>
+            <div className="flex items-center gap-6 text-[10px] text-zinc-500 font-mono">
+              <span className="hover:text-zinc-300 cursor-pointer">PRIVACY</span>
+              <span className="hover:text-zinc-300 cursor-pointer">TERMS</span>
+              <span className="hover:text-zinc-300 cursor-pointer">SECURITY</span>
             </div>
           </div>
         </div>

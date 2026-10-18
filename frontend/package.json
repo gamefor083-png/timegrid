@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "main": "electron/main.cjs",
-  "author": "TimeGrid",
+  "author": "Meet Kakadiya <Kakadiya Technologies™>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

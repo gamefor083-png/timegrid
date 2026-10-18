@@ -2,6 +2,7 @@
   "name": "timegrid-mern-backend",
   "version": "1.0.0",
   "description": "TimeGrid MERN Stack Backend with MongoDB Atlas & Express",
+  "author": "Meet Kakadiya <Kakadiya Technologies™>",
   "main": "server.js",
   "type": "module",
   "scripts": {
