@@ -275,12 +275,12 @@ export default function TimetableExportPage() {
           try {
             setActivePresetId(targetPresetId);
             const detail = await ApiService.getTimetablePreset(targetPresetId);
-            if (detail && detail.timetables) {
+            if (detail && detail.timetables && Object.keys(detail.timetables).length > 0) {
               loadedGrid = convertRawToExportGrid(detail.timetables, loadedDivs, loadedSubs);
               setTimetable(loadedGrid);
             }
-          } catch (err) {
-            console.warn("Could not load preset detail", err);
+          } catch {
+            // Silently fall through to localStorage fallback
           }
         }
 

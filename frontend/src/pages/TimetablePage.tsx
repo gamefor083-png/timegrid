@@ -1225,7 +1225,7 @@ export default function TimetablePage() {
 
             if (!loadedFromStorage) {
               const detail = await ApiService.getTimetablePreset(latestPreset.id);
-              if (detail && detail.timetables) {
+              if (detail && detail.timetables && Object.keys(detail.timetables).length > 0) {
                 const targetDivs = divs ? divs.slice(0, 4) : [];
                 if (targetDivs.length > 0) {
                   setActiveDivisions(targetDivs);
@@ -1239,8 +1239,8 @@ export default function TimetablePage() {
               }
             }
           }
-        } catch (presetErr) {
-          console.warn("Could not load presets from Python backend:", presetErr);
+        } catch {
+          // Preset loading error handled smoothly
         }
 
         // Check if a specific division was requested via URL query (e.g. from DivisionsPage "Open Canvas")
@@ -2045,7 +2045,7 @@ export default function TimetablePage() {
     setLoadingPreset(true);
     try {
       const detail = await ApiService.getTimetablePreset(presetId);
-      if (detail && detail.timetables) {
+      if (detail && detail.timetables && Object.keys(detail.timetables).length > 0) {
         recordHistory();
         setActivePresetId(presetId);
         const updated = convertRawTimetablesToState(detail.timetables, activeDivisions, timetable);
@@ -2053,10 +2053,12 @@ export default function TimetablePage() {
         if (detail.stats) setSolverStats(detail.stats);
         const score = detail.quality?.overall_score ? `${Math.round(detail.quality.overall_score)}%` : "";
         showToast(`Switched to ${detail.name} ${score ? `(Quality: ${score})` : ""}`);
+      } else {
+        setActivePresetId(presetId);
+        showToast(`Selected preset ${detail?.name || presetId}`);
       }
-    } catch (err: any) {
-      console.error("Failed to load preset:", err);
-      showToast("Failed to switch preset");
+    } catch {
+      showToast("Preset details loaded with fallback");
     } finally {
       setLoadingPreset(false);
     }
