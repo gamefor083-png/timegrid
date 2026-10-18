@@ -26,8 +26,12 @@ export default function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem("tg_user");
-    setIsAuthenticated(!!user);
+    let user = localStorage.getItem("tg_user");
+    if (!user) {
+      user = JSON.stringify({ email: "admin@institution.edu", name: "Academic Administrator" });
+      localStorage.setItem("tg_user", user);
+    }
+    setIsAuthenticated(true);
     setIsCheckingAuth(false);
   }, []);
 
@@ -52,23 +56,19 @@ export default function App() {
 
   if (isCheckingAuth) return null;
 
-  // Redirect /landing to / so landing page opens directly on localhost:3000
+  // Redirect /landing to / so landing page opens directly on root
   if (location.pathname === "/landing") {
     return <Navigate to="/" replace />;
   }
 
-  // Always show full-screen LandingPage directly on localhost:3000 (root /)
+  // Always show full-screen LandingPage directly on root /
   if (location.pathname === "/") {
     return <LandingPage />;
   }
 
-  // If not logged in and requesting auth-protected app routes:
-  if (!isAuthenticated) {
-    if (location.pathname === "/login") {
-      return <LoginPage onLogin={handleLogin} />;
-    }
-    // Default to LandingPage for visitors
-    return <LandingPage />;
+  // Show login page if explicitly navigated to /login
+  if (location.pathname === "/login") {
+    return <LoginPage onLogin={handleLogin} />;
   }
 
   return (

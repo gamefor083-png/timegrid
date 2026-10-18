@@ -92,10 +92,11 @@ export default function LandingPage() {
 
   const handleLaunch = (targetPath: any = '/timetable') => {
     const finalPath = typeof targetPath === 'string' && targetPath.startsWith('/') ? targetPath : '/timetable';
-    if (!localStorage.getItem('tg_user')) {
-      localStorage.setItem('tg_user', JSON.stringify({ email: 'admin@institution.edu', name: 'Academic Administrator' }));
+    localStorage.setItem('tg_user', JSON.stringify({ email: 'admin@institution.edu', name: 'Academic Administrator' }));
+    const newWindow = window.open(finalPath, '_blank', 'noopener,noreferrer');
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      navigate(finalPath);
     }
-    window.open(finalPath, '_blank', 'noopener,noreferrer');
   };
 
   const handleSimulateConflict = () => {
