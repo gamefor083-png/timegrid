@@ -93,8 +93,12 @@ export default function LandingPage() {
   const handleLaunch = (targetPath: any = '/timetable') => {
     const finalPath = typeof targetPath === 'string' && targetPath.startsWith('/') ? targetPath : '/timetable';
     localStorage.setItem('tg_user', JSON.stringify({ email: 'admin@institution.edu', name: 'Academic Administrator' }));
-    const newWindow = window.open(finalPath, '_blank', 'noopener,noreferrer');
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+    try {
+      const newWindow = window.open(finalPath, '_blank', 'noopener,noreferrer');
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        navigate(finalPath);
+      }
+    } catch {
       navigate(finalPath);
     }
   };

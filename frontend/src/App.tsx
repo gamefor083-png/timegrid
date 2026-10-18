@@ -56,9 +56,17 @@ export default function App() {
 
   if (isCheckingAuth) return null;
 
-  // Redirect /landing to / so landing page opens directly on root
+  // Redirect /landing to / so landing page opens cleanly at root
   if (location.pathname === "/landing") {
     return <Navigate to="/" replace />;
+  }
+
+  // Handle any legacy hash URLs (e.g. /#/timetable -> /timetable)
+  if (window.location.hash && window.location.hash.length > 2) {
+    const cleanRoute = window.location.hash.replace(/^#/, "");
+    if (cleanRoute.startsWith("/")) {
+      return <Navigate to={cleanRoute} replace />;
+    }
   }
 
   // Always show full-screen LandingPage directly on root /
