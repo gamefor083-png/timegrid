@@ -47,14 +47,17 @@ Object.entries(SUBJECTS_BY_BRANCH).forEach(([branch, subjects]) => {
 export const FALLBACK_TEACHERS = [];
 Object.entries(FACULTY_BY_BRANCH).forEach(([branch, teachers]) => {
   teachers.forEach((t, idx) => {
+    const code = t.employee_id || t.code || `${branch.slice(0, 2).toUpperCase()}${String(idx + 1).padStart(3, '0')}`;
+    const uniqueId = `teacher-${code.toLowerCase()}`;
     FALLBACK_TEACHERS.push({
-      id: `teacher-${t.code}`,
-      _id: `teacher-${t.code}`,
+      id: uniqueId,
+      _id: uniqueId,
       name: t.name,
-      employee_id: t.code,
+      employee_id: code,
       branch,
-      designation: t.designation,
-      max_weekly_hours: 20,
+      designation: t.designation || 'Assistant Professor',
+      max_weekly_hours: t.max_weekly_hours || 20,
+      target_weekly_hours: t.target_weekly_hours || 16,
       assigned_theory_hours: 12,
       assigned_lab_hours: 4,
     });

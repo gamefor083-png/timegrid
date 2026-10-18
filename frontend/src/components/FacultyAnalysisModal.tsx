@@ -36,7 +36,7 @@ export default function FacultyAnalysisModal({
     onCloseRef.current = onClose;
   });
 
-  const identifier = teacherId || teacherName || "";
+  const identifier = (teacherId && !teacherId.includes('undefined') ? teacherId : '') || teacherName || "";
 
   useEffect(() => {
     if (!isOpen || !identifier) return;
@@ -88,7 +88,7 @@ export default function FacultyAnalysisModal({
 
   if (!isOpen) return null;
 
-  const teacher = data?.teacher || {};
+  const teacher = data?.teacher || { name: teacherName || identifier, designation: "Faculty Member" };
   const liveStatus = data?.live_status || {};
   const analytics = data?.analytics || {};
   const weeklyGrid = data?.weekly_grid || {};

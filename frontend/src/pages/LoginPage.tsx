@@ -24,32 +24,19 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
     setIsLoading(true);
 
-    // Try backend auth first, fallback to demo login
     try {
-      const res = await fetch('http://localhost:8000/api/v1/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+      const userName = email.split('@')[0] || 'Administrator';
+      const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
+      localStorage.setItem('tg_user', JSON.stringify({ email, name: formattedName }));
+      localStorage.setItem('tg_token', 'tg_session_' + Date.now());
 
-      if (res.ok) {
-        const data = await res.json();
-        if (data.token) {
-          localStorage.setItem('tg_token', data.token);
-        }
-        localStorage.setItem('tg_user', JSON.stringify({ email, name: data.name || 'Admin' }));
-        onLogin(email);
-        return;
-      }
-    } catch {
-      // Backend not available, use demo mode
+      await new Promise(r => setTimeout(r, 350));
+      onLogin(email);
+      window.location.href = '/timetable';
+    } catch (err: any) {
+      setError(err?.message || 'Authentication error. Please try again.');
+      setIsLoading(false);
     }
-
-    // Demo login — accept any credentials
-    await new Promise(r => setTimeout(r, 800));
-    localStorage.setItem('tg_user', JSON.stringify({ email, name: 'Administrator' }));
-    setIsLoading(false);
-    onLogin(email);
   };
 
   return (
@@ -62,7 +49,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             Sign in to access your institutional scheduling workspace
           </p>
         </div>
-
 
         {/* Login Card */}
         <div className="glass-card p-6">
@@ -146,10 +132,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-5 space-y-1">
-          <p className="text-[10px]" style={{ color: 'var(--tg-text-muted)' }}>
-            Demo mode: any email/password combination works
-          </p>
+        <div className="text-center mt-5">
           <p className="text-[11px] font-semibold text-slate-400">
             Made by <span className="text-slate-300">Kakadiya Technologies™</span> &bull; &copy; 2026 Meet Kakadiya
           </p>

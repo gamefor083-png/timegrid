@@ -308,7 +308,7 @@ export default function TeacherSetupPage() {
             {/* Scrollable Faculty Name List */}
             <div className="flex-1 min-h-0 overflow-y-auto divide-y divide-slate-100 p-2 space-y-1">
               {sorted.map(t => {
-                const isSelected = analysisTeacher.id === t.id;
+                const isSelected = analysisTeacher?.id === t.id || analysisTeacher?.name === t.name;
                 const load = localLoads[t.id] || { theory: 0, lab: 0 };
                 const totalLoad = load.theory + load.lab;
                 const maxHours = t.max_weekly_hours || 20;
@@ -316,7 +316,7 @@ export default function TeacherSetupPage() {
 
                 return (
                   <button
-                    key={t.id}
+                    key={t.id || t.name}
                     onClick={() => setAnalysisTeacher(t)}
                     className={`w-full text-left p-2.5 rounded-xl border transition-all cursor-pointer flex items-center gap-2.5 ${
                       isSelected
@@ -357,6 +357,7 @@ export default function TeacherSetupPage() {
           {/* ── RIGHT COLUMN: Schedule & Deep Analysis (Embedded) ── */}
           <div className="flex-1 min-w-0 w-full h-[calc(100vh-140px)] max-h-[860px] sticky top-20">
             <FacultyAnalysisModal
+              key={analysisTeacher.id || analysisTeacher.name}
               embedded={true}
               isOpen={true}
               onClose={() => setAnalysisTeacher(null)}
